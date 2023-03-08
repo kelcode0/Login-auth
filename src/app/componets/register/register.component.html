@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <div *ngIf="!registroExitoso" class="login">
+    <img
+      class="login__logo"
+      src="../../../assets/img/icons8-login-64 (1).png"
+      alt="login"
+    />
+    <h1>Registrar</h1>
+    <form (ngSubmit)="registrar()" [formGroup]="formulario">
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+
+        <label>Email address</label>
+        <span *ngIf="emailRequerido" class="text-danger errorMesagge">
+          El <strong>correo</strong> es requerido</span
+        >
+        <span *ngIf="emailInValid" class="text-danger errorMesagge">
+          El <strong>correo</strong> es Invalido</span
+        >
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control mb-3"
+          placeholder="Password"
+          formControlName="password"
+        />
+
+        <label>Contraseña</label>
+
+        <span *ngIf="keyRequerido" class="text-danger errorMesagge">
+          La <strong>Contraseña</strong> es requerida</span
+        >
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control mb-3"
+          placeholder="Password"
+          formControlName="rptaPassword"
+        />
+        <label> Repetir Contraseña</label>
+
+        <span *ngIf="keyRequeridoRe" class="text-danger errorMesagge">
+          Repetir<strong> Contraseña</strong>
+        </span>
+
+      </div>
+      <div class="d-grid gap-2 mb-3">
+        <button class="btn btn-primary btn-lg" type="submit">Registrar</button>
+      </div>
+
+      <a class="mt-3" routerLink="/login">Volver</a>
+    </form>
+  </div>
+  <app-spinner *ngIf="registroExitoso"></app-spinner>
+</div>

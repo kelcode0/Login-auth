@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div *ngIf="!loading" class="login">
+    <img
+      class="login__logo"
+      src="../../../assets/img/icons8-login-64 (1).png"
+      alt="login"
+    />
+    <h1>Recuperar</h1>
+    <form [formGroup]="recuperarUsuario" (ngSubmit)="recuperar()">
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label>Email</label>
+        <span *ngIf="emailRequerido" class="text-danger errorMesagge">
+          El <strong>correo</strong> es requerido</span
+        >
+        <span *ngIf="emailInValid" class="text-danger errorMesagge">
+          El <strong>correo</strong> es Invalido</span
+        >
+      </div>
+
+      <div class="d-grid gap-2 mb-3">
+        <button class="btn btn-primary btn-lg" type="submit">Recuperar</button>
+      </div>
+
+      <a routerLink="/login">Volver</a>
+    </form>
+  </div>
+
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>
